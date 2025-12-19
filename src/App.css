@@ -1,0 +1,70 @@
+/* Import Pirate Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Set the default font to the "Storybook/Log" serif style */
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.5;
+  font-weight: 400;
+  
+  /* Theme Colors Defaults */
+  color: #5a3a2a; /* Ink Brown */
+  background-color: #f0e6d2; /* Parchment */
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Make Headings use the "Wanted Poster" font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', serif;
+}
+
+/* FIX: Remove the default centered box */
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* --- CUSTOM SCROLLBAR (Gold & Wood) --- */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2a1a0a; /* Dark Wood */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4a017; /* Gold */
+  border: 2px solid #2a1a0a;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8860b; /* Darker Gold */
+}
+
+/* --- TEXT SELECTION (Selection Color) --- */
+::selection {
+  background: #d92121; /* Luffy Red */
+  color: #ffffff;
+}
