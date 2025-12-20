@@ -121,7 +121,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
            </Button>
 
            <div className="mt-6 text-[#2a1a0a] font-mono text-xs font-bold bg-white/20 px-3 py-1 rounded-full">
-              Bounty Value: {project.bounty}
+              Bounty Value: {project.id},00,000 Gold Coins
            </div>
         </motion.div>
 
