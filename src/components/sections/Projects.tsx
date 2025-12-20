@@ -4,7 +4,7 @@ import { ProjectCard } from '@/components/ProjectCard';
 import { getProjectsData } from '@/api/projects';
 import { useState, useEffect } from 'react';
 import { Project } from '@/types';
-import { Skull, Swords } from 'lucide-react';
+import { ExternalLink, Github, Anchor, Map, Compass } from 'lucide-react';
 
 export function Projects() {
   const { ref, inView } = useInView({
@@ -51,24 +51,22 @@ export function Projects() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-block relative">
-             {/* Decorative 'X' behind text */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-1 bg-[#d92121] opacity-20 -rotate-3"></div>
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-1 bg-[#d92121] opacity-20 rotate-3"></div>
-             
-             <h2 className="text-5xl md:text-6xl font-serif font-black text-[#5a3a2a] uppercase tracking-widest drop-shadow-sm flex items-center justify-center gap-4">
-                <Skull className="w-10 h-10 md:w-12 md:h-12" />
-                <span>The Bounty List</span>
-                <Skull className="w-10 h-10 md:w-12 md:h-12 transform scale-x-[-1]" />
-             </h2>
+          <div className="inline-flex items-center gap-4 mb-2">
+             <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-[#5a3a2a]"></div>
+             <Compass className="w-8 h-8 text-[#5a3a2a] animate-[spin_20s_linear_infinite]" />
+             <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-[#5a3a2a]"></div>
           </div>
+
+          <h2 className="text-5xl md:text-6xl font-serif font-black [#5a3a2a] uppercase tracking-widest drop-shadow-md mb-4">
+             Captain's Voyages
+          </h2>
           
-          <div className="flex items-center justify-center gap-2 mt-4 text-[#8b6f58]">
-             <Swords className="w-5 h-5" />
-             <p className="font-serif font-bold italic text-xl">
-               "Legendary applications wanted: Dead or Alive"
+          <div className="flex items-center justify-center gap-2 text-[#8b6f58]">
+             <Map className="w-5 h-5" />
+             <p className="font-serif italic text-xl tracking-wide">
+               "Islands explored and treasures built across the digital sea."
              </p>
-             <Swords className="w-5 h-5 transform scale-x-[-1]" />
+             <Anchor className="w-5 h-5" />
           </div>
         </motion.div>
 

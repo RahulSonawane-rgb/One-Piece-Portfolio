@@ -49,7 +49,7 @@ export function Header() {
     { label: 'Log', id: 'about' },
     { label: 'Skills', id: 'skills' },
     { label: 'Haki', id: 'onepiece' },
-    { label: 'Bounties', id: 'projects' },
+    { label: 'Voyages', id: 'projects' },
     { label: 'Medals', id: 'achievements' },
     { label: 'Contact', id: 'contact' },
   ];

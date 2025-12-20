@@ -29,6 +29,18 @@ export const submitContactForm = async (data: ContactFormData) => {
       PUBLIC_KEY
     );
 
+    const COOLDOWN_TIME = 2 * 60 * 1000; // 2 minutes in milliseconds
+    const lastSent = localStorage.getItem('email_sent_at');
+    const now = Date.now();
+
+    const lastSentTimestamp = lastSent ? Number(lastSent) : 0;
+
+    if (lastSent && (now - lastSentTimestamp < COOLDOWN_TIME)) {
+      const remainingTime = Math.ceil((COOLDOWN_TIME - (now - lastSentTimestamp)) / 1000);
+      alert(`Please wait ${remainingTime} seconds before sending another message.`);
+      return;
+    }
+
     // --- EMAIL 2: Auto-Reply to User ---
     // This sends a "Thank You" TO the user's email
     await emailjs.send(

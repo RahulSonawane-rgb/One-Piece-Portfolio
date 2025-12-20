@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Skull } from 'lucide-react';
+import { ExternalLink, Github, Anchor, Map, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
@@ -19,115 +19,112 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
     <motion.div
-      variants={itemVariants}
-      className="relative group h-full"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="relative h-[420px] w-full max-w-sm mx-auto group perspective-1000"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Paper Texture Background - The "Parchment" look */}
-      <div className="bg-[#f0e6d2] border-[12px] border-double border-[#8b6f58] rounded-sm overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 h-full flex flex-col relative">
+      
+      {/* --- THE CONTAINER (Compass Box) --- */}
+      <div className="relative w-full h-full bg-[#1a2332] rounded-xl overflow-hidden shadow-2xl border-4 border-[#c9a050] transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(201,160,80,0.3)]">
         
-        {/* Paper Grain Texture Overlay (Optional subtle noise) */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')]"></div>
+        {/* Background Map Texture */}
+        <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')]"></div>
 
-        {/* --- POSTER HEADER --- */}
-        <div className="pt-4 px-4 text-center space-y-1 relative z-10">
-          <h2 className="text-4xl md:text-5xl font-serif font-black tracking-widest text-[#5a3a2a] opacity-90 scale-y-125" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.1)' }}>
-            WANTED
-          </h2>
-          <div className="flex items-center justify-center gap-2">
-            <div className="h-[2px] w-8 bg-[#5a3a2a]/60"></div>
-            <p className="text-xs font-serif font-bold tracking-widest text-[#5a3a2a]">DEAD OR ALIVE</p>
-            <div className="h-[2px] w-8 bg-[#5a3a2a]/60"></div>
-          </div>
+        {/* --- IMAGE SECTION (Top Half) --- */}
+        <div className="relative h-[55%] overflow-hidden border-b-4 border-[#c9a050]">
+           {/* The Image */}
+           <img 
+             src={project.image} 
+             alt={project.title} 
+             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
+           />
+           
+           {/* Overlay Gradient */}
+           <div className="absolute inset-0 bg-gradient-to-t from-[#1a2332] to-transparent opacity-80"></div>
+           
+           {/* Compass Overlay Decoration */}
+           <div className="absolute top-4 right-4 text-[#c9a050] opacity-80 drop-shadow-lg">
+              <Compass className="w-8 h-8 animate-[spin_10s_linear_infinite]" />
+           </div>
+
+           {/* Island Name (Title) - Always Visible */}
+           <div className="absolute bottom-4 left-4 z-10">
+              <div className="flex items-center gap-2 mb-1">
+                 <Map className="w-4 h-4 text-[#c9a050]" />
+                 <span className="text-[#c9a050] font-mono text-xs tracking-widest uppercase">New World Island</span>
+              </div>
+              <h3 className="text-3xl font-serif font-black text-white uppercase tracking-wide drop-shadow-md">
+                {project.title}
+              </h3>
+           </div>
         </div>
 
-        {/* --- IMAGE AREA --- */}
-        <div className="p-4 pb-2 relative z-10">
-          <div className="relative h-48 border-4 border-[#5a3a2a] shadow-inner bg-gray-800 overflow-hidden">
-            {/* The Image */}
-            <img
-              src={project.image}
-              alt={project.title}
-              className={`w-full h-full object-cover transition-all duration-500 ${isHovered ? 'scale-110 sepia-0' : 'sepia-[.3]'}`}
-            />
-            
-            {/* Hover Actions (Overlay) */}
-            <motion.div
-              className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-3 backdrop-blur-[2px]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isHovered ? 1 : 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Button
-                size="sm"
-                className="bg-[#d4a017] hover:bg-[#b8860b] text-[#2a1a0a] font-bold border-2 border-[#5a3a2a]"
-                onClick={() => window.open(project.liveLink, '_blank')}
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Visit Island
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className="bg-[#f0e6d2] hover:bg-white text-[#5a3a2a] border-2 border-[#5a3a2a] font-bold"
-                onClick={() => window.open(project.githubLink, '_blank')}
-              >
-                <Github className="w-4 h-4 mr-2" />
-                Log Pose (Code)
-              </Button>
-            </motion.div>
-          </div>
-        </div>
+        {/* --- DETAILS SECTION (Bottom Half - Slides Up) --- */}
+        <div className="relative h-[45%] bg-[#0f1724] p-6 flex flex-col justify-between group-hover:bg-[#162032] transition-colors duration-300">
+           
+           {/* Description */}
+           <div>
+              <p className="text-[#94a3b8] font-serif text-sm leading-relaxed line-clamp-3 group-hover:text-[#cbd5e1] transition-colors">
+                "{project.description}"
+              </p>
+           </div>
 
-        {/* --- TEXT CONTENT --- */}
-        <div className="px-5 pb-6 flex-1 flex flex-col items-center text-center relative z-10">
-          
-          {/* Project Title (The "Pirate Name") */}
-          <h3 className="text-3xl font-serif font-black text-[#2a1a0a] uppercase tracking-tighter mb-2 scale-y-110">
-            {project.title}
-          </h3>
-
-          {/* Description */}
-          <p className="text-[#5a3a2a] font-serif text-sm leading-tight mb-4 flex-1 line-clamp-3 italic opacity-90">
-            "{project.description}"
-          </p>
-
-          {/* Tech Stack (Skills) */}
-          <div className="w-full flex flex-wrap justify-center gap-1 mb-4">
-             {project.techStack.map((tech) => (
-               <span key={tech} className="px-2 py-0.5 text-[10px] font-bold uppercase border border-[#5a3a2a]/30 text-[#5a3a2a] bg-[#e6dcc3]">
-                 {tech}
-               </span>
-             ))}
-          </div>
-
-          {/* --- BOUNTY SECTION --- */}
-          <div className="w-full border-t-2 border-b-2 border-[#5a3a2a] py-2 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] bg-opacity-50">
-             <div className="flex items-end justify-center gap-2 text-[#2a1a0a]">
-                <span className="font-serif font-bold text-sm mb-1">BOUNTY</span>
-                <span className="font-serif font-black text-2xl tracking-widest flex items-center">
-                   <Skull className="w-5 h-5 mr-2 inline-block opacity-80" />
-                   {project.bounty}
-                   <span className="text-sm ml-1">-</span>
+           {/* Tech Stack Pills */}
+           <div className="flex flex-wrap gap-2 mt-4">
+              {project.techStack.slice(0, 4).map((tech) => (
+                <span key={tech} className="px-2 py-1 bg-[#1e293b] border border-[#c9a050]/30 text-[#c9a050] text-[10px] font-bold uppercase rounded tracking-wider">
+                  {tech}
                 </span>
-             </div>
-          </div>
-          
-          <p className="text-[10px] text-[#5a3a2a]/60 mt-2 font-mono">MARINE HQ • {project.id}</p>
+              ))}
+              {project.techStack.length > 4 && (
+                <span className="px-2 py-1 text-[#64748b] text-[10px] font-bold">+ {project.techStack.length - 4}</span>
+              )}
+           </div>
 
+           {/* "Log Pose" Indicator */}
+           <div className="absolute bottom-4 right-4 opacity-20 group-hover:opacity-100 transition-opacity duration-500">
+              <Anchor className="w-12 h-12 text-[#c9a050] transform rotate-[-15deg]" />
+           </div>
         </div>
+
+        {/* --- HIDDEN ACTION LAYER (Reveals on Hover) --- */}
+        <motion.div 
+          className="absolute inset-0 bg-[#c9a050]/95 backdrop-blur-sm flex flex-col items-center justify-center gap-4 z-20"
+          initial={{ y: '100%' }}
+          animate={{ y: isHovered ? 0 : '100%' }}
+          transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+        >
+           <h4 className="text-[#2a1a0a] font-serif font-black text-2xl uppercase tracking-widest mb-2">
+             Set Course?
+           </h4>
+
+           <Button
+             className="w-48 bg-[#2a1a0a] hover:bg-[#452a18] text-[#c9a050] border-2 border-[#2a1a0a] font-bold shadow-xl"
+             onClick={() => window.open(project.liveLink, '_blank')}
+           >
+             <ExternalLink className="w-4 h-4 mr-2" />
+             Sail to Website
+           </Button>
+
+           <Button
+             variant="outline"
+             className="w-48 border-2 border-[#2a1a0a] text-[#2a1a0a] hover:bg-[#2a1a0a] hover:text-[#c9a050] font-bold bg-transparent"
+             onClick={() => window.open(project.githubLink, '_blank')}
+           >
+             <Github className="w-4 h-4 mr-2" />
+             Inspect Logbook
+           </Button>
+
+           <div className="mt-6 text-[#2a1a0a] font-mono text-xs font-bold bg-white/20 px-3 py-1 rounded-full">
+              Bounty Value: {project.bounty}
+           </div>
+        </motion.div>
+
       </div>
     </motion.div>
   );
