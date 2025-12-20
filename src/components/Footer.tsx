@@ -2,16 +2,31 @@ import { motion } from "framer-motion"
 import { Anchor, Skull } from "lucide-react"
 
 export function Footer() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    element?.scrollIntoView({ behavior: 'smooth' })
-  }
+  
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault(); // Prevent default anchor jump
+
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 80; // Match your header height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    } else if (id === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const footerLinks = [
     { label: 'Deck', id: 'hero' },
     { label: 'Log', id: 'about' },
+    { label: 'Skills', id: 'skills' },
+    { label: 'Haki', id: 'onepiece' },
     { label: 'Bounties', id: 'projects' },
-    { label: 'Haki', id: 'onepiece' }, // Assuming the 3D section has id="onepiece"
     { label: 'Contact', id: 'contact' },
   ]
 
@@ -35,16 +50,17 @@ export function Footer() {
           {/* Right Side: Navigation Links */}
           <div className="flex flex-wrap justify-center gap-6">
             {footerLinks.map((link) => (
-              <motion.button
+              <motion.a
                 key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-sm font-bold text-[#f0e6d2]/80 hover:text-[#d4a017] transition-colors duration-300 uppercase tracking-wider flex items-center gap-1"
+                href={`#${link.id}`}
+                onClick={(e) => handleNavClick(e, link.id)}
+                className="text-sm font-bold text-[#f0e6d2]/80 hover:text-[#d4a017] transition-colors duration-300 uppercase tracking-wider flex items-center gap-1 cursor-pointer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {link.label === 'Deck' && <Anchor className="w-3 h-3" />}
                 {link.label}
-              </motion.button>
+              </motion.a>
             ))}
           </div>
 
@@ -52,7 +68,7 @@ export function Footer() {
         
         {/* Bottom decorative text */}
         <div className="mt-8 text-center border-t border-[#f0e6d2]/10 pt-4">
-            <p className="text-[10px] text-[#f0e6d2]/30 font-mono">
+            <p className="text-[10px] text-[#f0e6d2]/30 font-mono select-none">
                 TO BE CONTINUED...
             </p>
         </div>
