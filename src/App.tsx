@@ -1,22 +1,44 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ThemeProvider } from "./components/ui/theme-provider"
 import { Toaster } from "./components/ui/toaster"
-import { Layout } from "./components/Layout" // Verify this path matches your folder structure (might be ./components/layout/Layout)
+import { Layout } from "./components/Layout" 
 import { BlankPage } from "./pages/BlankPage"
 import { Home } from "./pages/Home"
 
+import { PoneglyphProvider } from '@/context/PoneglyphContext';
+import { QuestLog } from '@/components/RST/QuestLog';
+import { Laughtale } from '@/pages/Laughtale';
+import { ProtectedRoute } from '@/components/ProtectedRoute'; // Import the guard
+
 function App() {
   return (
-    // Changed defaultTheme to "light" so the Map Theme shows first
-    <ThemeProvider defaultTheme="light" storageKey="ui-theme">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Layout><Home /></Layout>} />
-          <Route path="*" element={<BlankPage />} />
-        </Routes>
-      </Router>
-      <Toaster />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider defaultTheme="light" storageKey="ui-theme">
+        <PoneglyphProvider>
+          
+          <QuestLog />
+          
+          <Routes>
+            <Route path="/" element={<Layout><Home /></Layout>} />
+            
+            {/* --- SECURE ROUTE --- */}
+            <Route 
+              path="/laughtale" 
+              element={
+                <ProtectedRoute>
+                  <Laughtale />
+                </ProtectedRoute>
+              } 
+            />
+            {/* -------------------- */}
+            
+            <Route path="*" element={<BlankPage />} />
+          </Routes>
+          
+          <Toaster />
+        </PoneglyphProvider>
+      </ThemeProvider>
+    </Router>
   )
 }
 

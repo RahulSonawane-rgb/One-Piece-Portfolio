@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { InternshipTimeline } from '@/components/InternshipTimeline';
 import { CertificateGrid } from '@/components/CertificateGrid';
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import { getAchievementsData } from '@/api/achievements';
 import { useState, useEffect } from 'react';
 import { AchievementsData } from '@/types';
@@ -100,7 +101,10 @@ export function Achievements() {
 
           {/* Grid Component */}
           <div className="relative">
-             <CertificateGrid certificates={achievements.certificates} />
+            <CertificateGrid certificates={achievements.certificates} />
+            <div className="opacity-40 hover:opacity-100">
+              <RoadPoneglyph id="WEST" codeFragment="RISE" hint="The Final Word" />
+            </div>
           </div>
         </motion.div>
 

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import { useInView } from 'react-intersection-observer';
 import { Scroll, Map, Anchor } from 'lucide-react';
 
@@ -87,13 +88,15 @@ export function About() {
                      className="w-full h-full object-cover transition-all duration-500 grayscale contrast-125 sepia-[0.3] group-hover:grayscale-0 group-hover:sepia-0"
                    />
                 </div>
-
+                
                 {/* NAME & BOUNTY */}
                 <div className="relative z-10">
                    <h3 className="text-2xl md:text-3xl font-black text-[#2a1a0a] uppercase font-serif tracking-wide text-center leading-none mb-3">
                      RAHUL SONAWANE
                    </h3>
-                   
+                   <div className="absolute top-20 left-10 opacity-50 hover:opacity-100 z-50">
+                     <RoadPoneglyph id="NORTH" codeFragment="THE" hint="The First Word" />
+                   </div>
                    <div className="flex items-center gap-2 border-t-[3px] border-[#2a1a0a] pt-1 mx-1">
                       <span className="font-bold text-[#2a1a0a] text-lg">฿</span>
                       <span className="font-black text-[#2a1a0a] text-2xl md:text-3xl tracking-tighter">1,500,000,000</span>
@@ -145,14 +148,14 @@ export function About() {
                         </h3>
                     </div>
                     <p className="opacity-90 leading-relaxed italic text-sm md:text-base">
-                      "My journey began at Dr. Babasaheb Ambedkar Marathwada University. I've navigated through complex <strong>Odoo development</strong> and launched my own fleet including <em>Cafe Buddy</em> and AI-powered bots. I am always seeking new horizons and ready to join a crew that values innovation."
+                      "My journey began at Dr. Babasaheb Ambedkar Marathwada University. I've navigated through complex <strong>Odoo development</strong> and launched my own fleet including <em>Cafe Buddy</em> and AI-powered bots. I am always seeking new horizons and ready to join a crew that values innovation."                      
                     </p>
                   </div>
                   
                   {/* Signature / Stamp */}
                   <div className="mt-6 flex justify-end">
                       <div className="border-4 border-[#d92121] text-[#d92121] px-3 py-1 font-black transform -rotate-12 opacity-80 text-xs md:text-sm uppercase tracking-widest rounded-sm">
-                          Captain Approved
+                        Captain Approved
                       </div>
                   </div>
 

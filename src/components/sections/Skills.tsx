@@ -56,7 +56,7 @@ export function Skills() {
           </div>
           <p className="text-[#8b6f58] text-xl font-serif italic">
             "I've eaten many fruits to <span className="text-[#d92121] font-bold"> Gain these powers...</span>"
-           </p>
+          </p>
         </motion.div>
 
         {/* --- CATEGORIZED DISPLAY CASES --- */}

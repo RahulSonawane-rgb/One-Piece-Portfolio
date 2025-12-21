@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ProjectCard } from '@/components/ProjectCard';
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import { getProjectsData } from '@/api/projects';
 import { useState, useEffect } from 'react';
 import { Project } from '@/types';
@@ -66,6 +67,9 @@ export function Projects() {
              <p className="font-serif italic text-xl tracking-wide">
                "Islands explored and treasures built across the digital sea."
              </p>
+             <div className="flex justify-center my-8">
+                <RoadPoneglyph id="EAST" codeFragment="WILL" hint="The Third Word" />
+              </div>
              <Anchor className="w-5 h-5" />
           </div>
         </motion.div>

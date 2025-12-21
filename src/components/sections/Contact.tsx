@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ContactForm } from '@/components/ContactForm';
 import { SocialLinks } from '@/components/SocialLinks';
+import DenDenMushi from '@/components/DenDenMushi';
 import { Phone, Radio, Waves } from 'lucide-react';
 
 export function Contact() {
@@ -50,6 +51,7 @@ export function Contact() {
           <p className="text-[#8b6f58] text-lg font-serif italic mt-2">
             "Puru puru puru... Pick up the phone! Let's talk about your next adventure."
           </p>
+          <DenDenMushi />
         </motion.div>
 
         {/* --- THE FORM CONTAINER (The Device) --- */}

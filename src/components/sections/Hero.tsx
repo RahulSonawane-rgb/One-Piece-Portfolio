@@ -8,7 +8,7 @@ export function Hero() {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const resumeUrl = "https://github.com/RahulSonawane-rgb/rahul-portfolio/raw/refs/heads/master/Resume.pdf";
+  const resumeUrl = "https://raw.githubusercontent.com/sorahul196-code/rahul-portfolio/refs/heads/main/Resume.pdf";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -57,7 +57,6 @@ export function Hero() {
              </div>
         </motion.div>
       </div>
-
       {/* --- MAIN CONTENT --- */}
       <motion.div
         className="relative z-10 text-center px-4 max-w-5xl mx-auto"
