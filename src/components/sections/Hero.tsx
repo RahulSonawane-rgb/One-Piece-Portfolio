@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
+
 import { ChevronDown, Anchor, Map as MapIcon, Skull } from 'lucide-react';
 
 export function Hero() {

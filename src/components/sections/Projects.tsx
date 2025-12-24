@@ -40,7 +40,7 @@ export function Projects() {
   return (
     <section id="projects" ref={ref} className="py-24 px-4 relative bg-[#f0e6d2]">
       
-      {/* Background Texture Overlay */}
+      {/* Baund Texture Overlay */}
       <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')]"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -67,10 +67,13 @@ export function Projects() {
              <p className="font-serif italic text-xl tracking-wide">
                "Islands explored and treasures built across the digital sea."
              </p>
-             <div className="flex justify-center my-8">
-                <RoadPoneglyph id="EAST" codeFragment="WILL" hint="The Third Word" />
-              </div>
              <Anchor className="w-5 h-5" />
+          </div>
+          <div className="absolute bottom-80 right-10 opacity-30 hover:opacity-100 z-50">
+            <RoadPoneglyph locationId="ON_RIGHT_PROJECT_CARD_2" />
+          </div>
+          <div className="absolute bottom-60 left-10 opacity-30 hover:opacity-100 z-50">
+            <RoadPoneglyph locationId="ON_PROJECT_CARD_1" />
           </div>
         </motion.div>
 

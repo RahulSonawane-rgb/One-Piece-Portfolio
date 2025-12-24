@@ -8,6 +8,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { Award, ExternalLink, Scroll } from 'lucide-react';
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import { Button } from '@/components/ui/button';
 
 interface Certificate {
@@ -122,10 +123,16 @@ export function CertificateGrid({ certificates }: CertificateGridProps) {
             </DialogHeader>
 
             <div className="text-center space-y-2">
+              <div className="absolute top-20 left-40 opacity-50 hover:opacity-100 z-50">
+                <RoadPoneglyph locationId="IN_CERTIFICATE_1" />
+              </div>
               <h3 className="text-2xl font-serif font-bold text-[#d4a017]">{selectedCertificate?.name}</h3>
               <p className="text-[#f0e6d2]/70 font-mono text-sm uppercase tracking-widest">
                 Issued by: {selectedCertificate?.organization}
               </p>
+              <div className="absolute bottom-20 right-40 opacity-50 hover:opacity-100 z-50">
+                <RoadPoneglyph locationId="IN_CERTIFICATE_2" />
+              </div>
             </div>
 
             {selectedCertificate?.image && (

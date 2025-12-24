@@ -103,7 +103,7 @@ export function Achievements() {
           <div className="relative">
             <CertificateGrid certificates={achievements.certificates} />
             <div className="opacity-40 hover:opacity-100">
-              <RoadPoneglyph id="WEST" codeFragment="RISE" hint="The Final Word" />
+              
             </div>
           </div>
         </motion.div>

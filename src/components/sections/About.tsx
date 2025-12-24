@@ -67,7 +67,9 @@ export function About() {
                 
                 {/* Tape at the top (Visual detail) */}
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-[#f4e4bc] opacity-80 rotate-[-3deg] shadow-sm z-20"></div>
-
+                <div className="absolute top-20 left-10 opacity-50 hover:opacity-100 z-50">
+                     <RoadPoneglyph locationId="WANTED_POSTER_HEADER" />
+                   </div>
                 {/* HEADER: WANTED */}
                 <div className="text-center mb-3 relative z-10">
                    <h2 className="text-4xl md:text-5xl font-serif font-black text-[#2a1a0a] tracking-[0.15em] scale-y-125" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.1)' }}>
@@ -95,7 +97,7 @@ export function About() {
                      RAHUL SONAWANE
                    </h3>
                    <div className="absolute top-20 left-10 opacity-50 hover:opacity-100 z-50">
-                     <RoadPoneglyph id="NORTH" codeFragment="THE" hint="The First Word" />
+                     <RoadPoneglyph locationId="ABOUT_POSTER_1.5B" />
                    </div>
                    <div className="flex items-center gap-2 border-t-[3px] border-[#2a1a0a] pt-1 mx-1">
                       <span className="font-bold text-[#2a1a0a] text-lg">฿</span>

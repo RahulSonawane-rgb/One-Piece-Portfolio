@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ExternalLink, History, Anchor } from 'lucide-react';
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import { Button } from '@/components/ui/button';
 
 export function LegacyLog() {
@@ -64,6 +65,9 @@ export function LegacyLog() {
                  rahul-portfolio-4zj5.onrender.com
                </div>
                <Anchor className="w-4 h-4 text-[#5a3a2a]" />
+               <div className="absolute top-40 right-40 opacity-50 hover:opacity-100 z-50">
+                  <RoadPoneglyph locationId="OLD_PORTFOLIO_SCREEN" />
+                </div>
             </div>
 
             {/* The Live Iframe */}
@@ -74,7 +78,6 @@ export function LegacyLog() {
                     className="w-full h-full border-0 opacity-80 group-hover:opacity-100 transition-opacity duration-500 grayscale group-hover:grayscale-0"
                     loading="lazy"
                 />
-                
                 {/* Interaction Overlay (Click to Open) */}
                 <div 
                     onClick={openOldPortfolio}
@@ -89,6 +92,9 @@ export function LegacyLog() {
                         <span className="font-serif font-bold uppercase tracking-widest text-sm">
                             Open Logbook
                         </span>
+                        <div className="absolute top-90 left-19 opacity-50 hover:opacity-100 z-50">
+                          <RoadPoneglyph locationId="OLD_PORTFOLIO_BUTTON" />
+                        </div>
                     </motion.div>
                 </div>
             </div>

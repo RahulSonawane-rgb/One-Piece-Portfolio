@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { Anchor, Skull } from "lucide-react"
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 
 export function Footer() {
   
@@ -68,6 +69,9 @@ export function Footer() {
         
         {/* Bottom decorative text */}
         <div className="mt-8 text-center border-t border-[#f0e6d2]/10 pt-4">
+            <div className="absolute bottom-8 left-70 opacity-30 hover:opacity-100 z-50">
+              <RoadPoneglyph locationId="FOOTER" />
+            </div>
             <p className="text-[10px] text-[#f0e6d2]/30 font-mono select-none">
                 TO BE CONTINUED...
             </p>

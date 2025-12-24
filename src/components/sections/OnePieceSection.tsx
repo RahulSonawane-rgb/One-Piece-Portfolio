@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Camera, Sparkles, Hand, Maximize2, Minimize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 
 // --- SHADERS & CONSTANTS (Moved outside component to avoid re-creation) ---
 const INITIAL_PARTICLE_COUNT_DESKTOP = 200000;
@@ -709,13 +710,18 @@ const OnePieceSection = () => {
 
              {/* UI Overlay: Controls Panel */}
              <div className="absolute bottom-4 right-4 z-20 flex flex-col items-end gap-3">
-                
+                <div className="absolute bottom-80 right-20 opacity-50 hover:opacity-100 z-50">
+                  <RoadPoneglyph locationId="STRAWHAT_MODAL_SCREEN" />
+                </div>
                 {/* Status Text */}
                 <span ref={gestureStatusTextRef} className="text-[#d4a017] bg-black/60 px-3 py-1 rounded font-mono text-sm border border-[#d4a017]/30 backdrop-blur-sm">
                    System Standby
                 </span>
-
+                
                 <div className="flex gap-2">
+                  <div className="absolute bottom-0 left-0 opacity-100 hover:opacity-100 z-50">
+                    <RoadPoneglyph locationId="STRAWHAT_MODAL_BUTTON" />
+                  </div>
                    {/* Expand Button */}
                    <Button 
                       variant="outline" 

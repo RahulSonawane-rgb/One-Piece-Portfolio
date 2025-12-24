@@ -141,9 +141,6 @@ export function InternshipTimeline({ internships }: InternshipTimelineProps) {
           <div className="bg-[#d4a017] p-4 flex items-center gap-3 border-b-4 border-[#5a3a2a]">
              <Ship className="w-6 h-6 text-[#2a1a0a]" />
              <DialogTitle className="text-[#2a1a0a] font-serif font-black uppercase tracking-widest text-lg md:text-xl">
-              <div className="absolute bottom-40 left-80 z-20">
-               <RoadPoneglyph id="SOUTH" codeFragment="SUN" hint="The Second Word" />
-              </div>
                Voyage Log Entry
              </DialogTitle>
           </div>
@@ -175,6 +172,9 @@ export function InternshipTimeline({ internships }: InternshipTimelineProps) {
               <p className="text-[#d4a017] font-bold font-serif uppercase tracking-wider mb-3 text-sm">
                 Arsenal (Tech Used)
               </p>
+              <div className="absolute bottom-20 right-40 opacity-30 hover:opacity-100 z-50">
+                <RoadPoneglyph locationId="EXPERIENCE_IN_ACHIEVEMENTS" />
+              </div>
               <div className="flex flex-wrap gap-2">
                 {selectedInternship?.technologies.map((tech) => (
                   <span

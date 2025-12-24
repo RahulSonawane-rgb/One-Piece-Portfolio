@@ -1,5 +1,6 @@
 import { Menu, X, Skull } from "lucide-react";
 import { ThemeToggle } from "./ui/theme-toggle";
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -71,6 +72,7 @@ export function Header() {
           <span className="text-xl md:text-2xl font-serif font-black tracking-wider text-[#f0e6d2] uppercase group-hover:text-[#d4a017] transition-colors">
               Captain's Log
           </span>
+          <RoadPoneglyph locationId="HEADER_LOGO" />
         </motion.div>
 
         {/* Desktop Navigation */}

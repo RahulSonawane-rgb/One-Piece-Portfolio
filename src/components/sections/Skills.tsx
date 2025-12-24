@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { SkillFruit } from '@/components/SkillFruit';
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import { getSkillsData } from '@/api/skills';
 import { useState, useEffect } from 'react';
 import { SkillsData, Skill } from '@/types';
@@ -57,6 +58,9 @@ export function Skills() {
           <p className="text-[#8b6f58] text-xl font-serif italic">
             "I've eaten many fruits to <span className="text-[#d92121] font-bold"> Gain these powers...</span>"
           </p>
+          <div className="absolute top-80 left-19 opacity-25 hover:opacity-100 z-50">
+            <RoadPoneglyph locationId="SKILL_PARAMECIA" />
+          </div>
         </motion.div>
 
         {/* --- CATEGORIZED DISPLAY CASES --- */}

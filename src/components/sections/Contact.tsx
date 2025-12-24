@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ContactForm } from '@/components/ContactForm';
 import { SocialLinks } from '@/components/SocialLinks';
+import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import DenDenMushi from '@/components/DenDenMushi';
 import { Phone, Radio, Waves } from 'lucide-react';
 
