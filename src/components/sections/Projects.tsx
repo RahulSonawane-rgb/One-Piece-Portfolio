@@ -5,9 +5,11 @@ import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import { getProjectsData } from '@/api/projects';
 import { useState, useEffect } from 'react';
 import { Project } from '@/types';
+import { useJoyboyDance } from '@/hooks/useJoyboyDance';
 import { ExternalLink, Github, Anchor, Map, Compass } from 'lucide-react';
 
 export function Projects() {
+  const joyboy = useJoyboyDance();
   const { ref, inView } = useInView({
     threshold: 0.1, // Trigger a bit earlier
     triggerOnce: true,
@@ -52,29 +54,31 @@ export function Projects() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-4 mb-2">
-             <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-[#5a3a2a]"></div>
-             <Compass className="w-8 h-8 text-[#5a3a2a] animate-[spin_20s_linear_infinite]" />
-             <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-[#5a3a2a]"></div>
-          </div>
+          <motion.div {...joyboy}>
+            <div className="inline-flex items-center gap-4 mb-2">
+              <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-[#5a3a2a]"></div>
+              <Compass className="w-8 h-8 text-[#5a3a2a] animate-[spin_20s_linear_infinite]" />
+              <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-[#5a3a2a]"></div>
+            </div>
 
-          <h2 className="text-5xl md:text-6xl font-serif font-black [#5a3a2a] uppercase tracking-widest drop-shadow-md mb-4">
-             Captain's Voyages
-          </h2>
-          
-          <div className="flex items-center justify-center gap-2 text-[#8b6f58]">
-             <Map className="w-5 h-5" />
-             <p className="font-serif italic text-xl tracking-wide">
-               "Islands explored and treasures built across the digital sea."
-             </p>
-             <Anchor className="w-5 h-5" />
-          </div>
-          <div className="absolute bottom-80 right-10 opacity-30 hover:opacity-100 z-50">
-            <RoadPoneglyph locationId="ON_RIGHT_PROJECT_CARD_2" />
-          </div>
-          <div className="absolute bottom-60 left-10 opacity-30 hover:opacity-100 z-50">
-            <RoadPoneglyph locationId="ON_PROJECT_CARD_1" />
-          </div>
+            <h2 className="text-5xl md:text-6xl font-serif font-black [#5a3a2a] uppercase tracking-widest drop-shadow-md mb-4">
+              Captain's Voyages
+            </h2>
+            
+            <div className="flex items-center justify-center gap-2 text-[#8b6f58]">
+              <Map className="w-5 h-5" />
+              <p className="font-serif italic text-xl tracking-wide">
+                "Islands explored and treasures built across the digital sea."
+              </p>
+              <Anchor className="w-5 h-5" />
+            </div>
+            <div className="absolute bottom-80 right-10 opacity-30 hover:opacity-100 z-50">
+              <RoadPoneglyph locationId="ON_RIGHT_PROJECT_CARD_2" />
+            </div>
+            <div className="absolute bottom-60 left-10 opacity-30 hover:opacity-100 z-50">
+              <RoadPoneglyph locationId="ON_PROJECT_CARD_1" />
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* --- THE GRID (Wall of Posters) --- */}

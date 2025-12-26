@@ -2,8 +2,7 @@
 
 > "I'm going to be the King of the Developers!"
 
-![One Piece Portfolio Banner](https://i.imgur.com/your-banner-placeholder.png)
-*(Feel free to replace this image link with a screenshot of your site)*
+![One Piece Portfolio Banner](https://i.ibb.co/h37STGP/Screenshot-2025-12-26-230343.png)
 
 ## ⚓ About The Project
 

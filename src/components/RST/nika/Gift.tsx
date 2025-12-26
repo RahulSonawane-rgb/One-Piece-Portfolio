@@ -67,17 +67,6 @@ export function LaughTaleGift() {
             <CaptainsLog />
             <FinalEasterEgg />
         </motion.div>
-
-        {/* Sound Toggle Button */}
-        <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: showEntrance ? 0 : 1 }}
-            transition={{ delay: 1 }}
-            onClick={() => setPlaySound(!playSound)}
-            className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-yellow-400 to-yellow-600 text-purple-900 px-4 py-2 rounded-full shadow-lg hover:shadow-yellow-500/50 transition-all duration-300"
-        >
-            {playSound ? '🔊 Sound ON' : '🔇 Sound OFF'}
-        </motion.button>
         </div>
     </>
   );

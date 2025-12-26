@@ -1,8 +1,12 @@
 import { motion } from "framer-motion"
 import { Anchor, Skull } from "lucide-react"
 import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
+// 1. Import the Hook
+import { useJoyboyDance } from '@/hooks/useJoyboyDance';
 
 export function Footer() {
+  // 2. Initialize the Hook
+  const joyboy = useJoyboyDance();
   
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault(); // Prevent default anchor jump
@@ -39,10 +43,11 @@ export function Footer() {
           
           {/* Left Side: Copyright & Motto */}
           <div className="flex flex-col items-center md:items-start gap-2">
-            <div className="flex items-center gap-2 text-[#d4a017]">
+            {/* 3. Apply Dance to Branding (Converted div to motion.div) */}
+            <motion.div {...joyboy} className="flex items-center gap-2 text-[#d4a017]">
                <Skull className="w-5 h-5" />
                <span className="font-serif font-bold tracking-widest uppercase">The Pirate King's Dev</span>
-            </div>
+            </motion.div>
             <p className="text-sm text-[#f0e6d2]/60 font-mono text-center md:text-left">
               © 2024 Captain's Log. Built with React & Devil Fruits.
             </p>
@@ -51,7 +56,9 @@ export function Footer() {
           {/* Right Side: Navigation Links */}
           <div className="flex flex-wrap justify-center gap-6">
             {footerLinks.map((link) => (
+              // 4. Apply Dance to Links
               <motion.a
+                {...joyboy}
                 key={link.id}
                 href={`#${link.id}`}
                 onClick={(e) => handleNavClick(e, link.id)}
@@ -72,9 +79,10 @@ export function Footer() {
             <div className="absolute bottom-8 left-70 opacity-30 hover:opacity-100 z-50">
               <RoadPoneglyph locationId="FOOTER" />
             </div>
-            <p className="text-[10px] text-[#f0e6d2]/30 font-mono select-none">
+            {/* 5. Apply Dance to Bottom Text (Converted p to motion.p) */}
+            <motion.p {...joyboy} className="text-[10px] text-[#f0e6d2]/30 font-mono select-none">
                 TO BE CONTINUED...
-            </p>
+            </motion.p>
         </div>
 
       </div>

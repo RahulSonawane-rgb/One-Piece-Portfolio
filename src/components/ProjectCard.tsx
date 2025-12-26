@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Bird } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useJoyboyDance } from '@/hooks/useJoyboyDance';
 import { useState } from 'react';
 
 interface ProjectCardProps {
@@ -17,10 +18,12 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const joyboy = useJoyboyDance();
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
+      {...joyboy}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

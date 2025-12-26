@@ -11,6 +11,8 @@ import { QuestLog } from '@/components/RST/QuestLog';
 import { Laughtale } from '@/pages/Laughtale';
 import { ProtectedRoute } from '@/components/ProtectedRoute'; 
 import { LoadingScreen } from '@/components/LoadingScreen';
+import { AudioProvider } from '@/context/AudioContext';
+import { SoundController } from '@/components/SoundController';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,11 +42,13 @@ function App() {
 
   return (
     <>
+      <AudioProvider> {/* 1. Wrap EVERYTHING here */}
       <LoadingScreen isLoading={isLoading} />
 
       <Router>
         <ThemeProvider defaultTheme="light" storageKey="ui-theme">
           <PoneglyphProvider>
+            <SoundController />
             
             <QuestLog />
             
@@ -69,6 +73,7 @@ function App() {
           </PoneglyphProvider>
         </ThemeProvider>
       </Router>
+      </AudioProvider>
     </>
   );
 }

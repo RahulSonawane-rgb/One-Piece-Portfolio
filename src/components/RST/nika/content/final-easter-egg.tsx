@@ -189,11 +189,11 @@ export function FinalEasterEgg() {
                       <div className="p-6 bg-green-900/30 rounded-lg border border-green-500/30">
                          <p className="text-xl text-green-300 font-bold mb-2">🔓 REPOSITORY UNLOCKED</p>
                          <p className="text-amber-100/80 text-sm mb-4">
-                           You have proven your worth. Here is the link to my complete component library, 
+                           You have proven your worth. Here is the link to my complete Portfolio, 
                            design systems, and production assets.
                          </p>
                          <Button 
-                           onClick={() => window.open('https://github.com', '_blank')}
+                           onClick={() => window.open('https://github.com/RahulSonawane-rgb/One-Piece-Portfolio', '_blank')}
                            className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-bold py-6 text-lg"
                          >
                             Go to Secret GitHub Repo <ArrowRight className="ml-2 w-5 h-5" />

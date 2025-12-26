@@ -3,8 +3,13 @@ import { ThemeToggle } from "./ui/theme-toggle";
 import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+// 1. Import the Hook
+import { useJoyboyDance } from '@/hooks/useJoyboyDance';
 
 export function Header() {
+  // 2. Initialize the Hook
+  const joyboy = useJoyboyDance();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Close menu if window is resized to desktop width
@@ -61,6 +66,7 @@ export function Header() {
         
         {/* Logo area */}
         <motion.div
+          {...joyboy} // 3. Make the Logo Dance
           className="flex items-center gap-3 cursor-pointer group"
           whileHover={{ scale: 1.05 }}
           onClick={scrollToTop}
@@ -78,15 +84,17 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            // 4. Make Desktop Links Dance (Converted a to motion.a)
+            <motion.a
+              {...joyboy}
               key={link.id}
               href={`#${link.id}`}
               onClick={(e) => handleNavClick(e, link.id)}
-              className="text-[#f0e6d2]/80 hover:text-[#d4a017] transition-all duration-300 font-bold uppercase tracking-widest text-sm relative group"
+              className="text-[#f0e6d2]/80 hover:text-[#d4a017] transition-all duration-300 font-bold uppercase tracking-widest text-sm relative group cursor-pointer"
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#d4a017] transition-all duration-300 group-hover:w-full"></span>
-            </a>
+            </motion.a>
           ))}
         </nav>
 
@@ -118,14 +126,16 @@ export function Header() {
           >
             <div className="flex flex-col p-4 space-y-2 pb-8 bg-[#2a1a0a]">
               {navLinks.map((link) => (
-                <a
+                // 5. Make Mobile Links Dance (Converted a to motion.a)
+                <motion.a
+                  {...joyboy}
                   key={link.id}
                   href={`#${link.id}`}
                   onClick={(e) => handleNavClick(e, link.id)}
-                  className="w-full text-left px-6 py-4 text-[#f0e6d2] font-serif font-bold text-lg hover:text-[#2a1a0a] hover:bg-[#d4a017] hover:pl-8 transition-all duration-300 border-b border-[#d4a017]/20 last:border-0 uppercase tracking-widest rounded-sm block"
+                  className="w-full text-left px-6 py-4 text-[#f0e6d2] font-serif font-bold text-lg hover:text-[#2a1a0a] hover:bg-[#d4a017] hover:pl-8 transition-all duration-300 border-b border-[#d4a017]/20 last:border-0 uppercase tracking-widest rounded-sm block cursor-pointer"
                 >
                   {link.label}
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.nav>

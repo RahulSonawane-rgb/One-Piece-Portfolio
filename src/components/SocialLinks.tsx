@@ -2,13 +2,13 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Instagram, Mail } from 'lucide-react';
 
 const socialLinks = [
-  {
-    name: 'GitHub',
-    icon: Github,
-    url: 'https://github.com/RahulSonawane-rgb',
-    color: 'group-hover:text-gray-900',
-    borderColor: 'group-hover:border-gray-900',
-  },
+  // {
+  //   name: 'GitHub',
+  //   icon: Github,
+  //   url: 'https://github.com/RahulSonawane-rgb',
+  //   color: 'group-hover:text-gray-900',
+  //   borderColor: 'group-hover:border-gray-900',
+  // },
   {
     name: 'LinkedIn',
     icon: Linkedin,

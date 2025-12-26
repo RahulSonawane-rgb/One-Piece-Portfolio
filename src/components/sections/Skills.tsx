@@ -5,8 +5,10 @@ import { RoadPoneglyph } from '@/components/RST/RoadPoneglyph';
 import { getSkillsData } from '@/api/skills';
 import { useState, useEffect } from 'react';
 import { SkillsData, Skill } from '@/types';
+import { useJoyboyDance } from '@/hooks/useJoyboyDance';
 
 export function Skills() {
+  const joyboy = useJoyboyDance();
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
   const [skills, setSkills] = useState<SkillsData | null>(null);
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
@@ -50,17 +52,19 @@ export function Skills() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-           <div className="inline-block border-b-4 border-[#5a3a2a] pb-2 px-8 mb-4">
-             <h2 className="text-4xl md:text-6xl font-serif font-black text-[#5a3a2a] uppercase tracking-widest">
-               Devil Fruit Arsenal
-             </h2>
-          </div>
-          <p className="text-[#8b6f58] text-xl font-serif italic">
-            "I've eaten many fruits to <span className="text-[#d92121] font-bold"> Gain these powers...</span>"
-          </p>
-          <div className="absolute top-80 left-19 opacity-25 hover:opacity-100 z-50">
-            <RoadPoneglyph locationId="SKILL_PARAMECIA" />
-          </div>
+          <motion.div {...joyboy} >
+            <div className="inline-block border-b-4 border-[#5a3a2a] pb-2 px-8 mb-4">
+            <h2 className="text-4xl md:text-6xl font-serif font-black text-[#5a3a2a] uppercase tracking-widest">
+              Devil Fruit Arsenal
+            </h2>
+            </div>
+            <p className="text-[#8b6f58] text-xl font-serif italic">
+              "I've eaten many fruits to <span className="text-[#d92121] font-bold"> Gain these powers...</span>"
+            </p>
+            <div className="absolute top-80 left-19 opacity-25 hover:opacity-100 z-50">
+              <RoadPoneglyph locationId="SKILL_PARAMECIA" />
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* --- CATEGORIZED DISPLAY CASES --- */}
@@ -89,26 +93,28 @@ export function Skills() {
                   }
                 }}
               >
-                <h3 className={`text-2xl md:text-3xl font-serif font-bold mb-8 pb-3 ${borderColor} ${textColor} border-b-2`}>
-                  {catDisplay} Powers
-                </h3>
-                <motion.div 
-                  className="flex flex-wrap justify-center gap-6"
-                  variants={containerVariants}
-                >
-                  {catSkills.map((skill) => (
-                    <motion.div 
-                      key={skill.id}
-                      variants={fruitVariants}
-                    >
-                      <SkillFruit 
-                        skill={skill} 
-                        category={category} 
-                        isSelected={selectedSkill === skill.id} 
-                        onSelect={() => setSelectedSkill(selectedSkill === skill.id ? null : skill.id)} 
-                      />
-                    </motion.div>
-                  ))}
+                <motion.div {...joyboy}>
+                  <h3 className={`text-2xl md:text-3xl font-serif font-bold mb-8 pb-3 ${borderColor} ${textColor} border-b-2`}>
+                    {catDisplay} Powers
+                  </h3>
+                  <motion.div 
+                    className="flex flex-wrap justify-center gap-6"
+                    variants={containerVariants}
+                  >
+                    {catSkills.map((skill) => (
+                      <motion.div 
+                        key={skill.id}
+                        variants={fruitVariants}
+                      >
+                        <SkillFruit 
+                          skill={skill} 
+                          category={category} 
+                          isSelected={selectedSkill === skill.id} 
+                          onSelect={() => setSelectedSkill(selectedSkill === skill.id ? null : skill.id)} 
+                        />
+                      </motion.div>
+                    ))}
+                  </motion.div>
                 </motion.div>
               </motion.div>
             );
