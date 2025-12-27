@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Volume2, VolumeX } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 import { HeroSection } from '@/components/RST/nika/content/hero-section';
 import { TreasureVault } from '@/components/RST/nika/content/treasure-vault';
@@ -226,7 +226,6 @@ const BeamOverlay = ({ stage }: { stage: string }) => {
 
 export function Laughtale() {
   const [stage, setStage] = useState<'locked' | 'summoning' | 'charging' | 'shooting' | 'convergence' | 'portal' | 'revealed'>('locked');
-  const [playSound, setPlaySound] = useState(false);
   const navigate = useNavigate();
 
   // Animation Timeline
@@ -366,15 +365,6 @@ export function Laughtale() {
                  <FinalEasterEgg />
               </motion.div>
 
-              <motion.button
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1 }}
-                  onClick={() => setPlaySound(!playSound)}
-                  className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-[#d4a017] to-[#b45309] text-[#2a1a0a] p-3 rounded-full shadow-lg hover:scale-110 transition-all"
-              >
-                  {playSound ? <Volume2 className="w-6 h-6" /> : <VolumeX className="w-6 h-6" />}
-              </motion.button>
             </div>
           </motion.div>
         )}

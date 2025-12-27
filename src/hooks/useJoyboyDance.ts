@@ -1,56 +1,78 @@
 import { useAudio } from '@/context/AudioContext';
-import { useState, useEffect } from 'react';
+import { useRef } from 'react';
 
 export function useJoyboyDance() {
   const { isPlaying, beatStrength } = useAudio();
-  const [isMobile, setIsMobile] = useState(false);
+  
+  // Stores the current dance step (0, 1, 2, or 3)
+  const step = useRef(0);
+  const lastBeatTime = useRef(0);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsMobile(window.innerWidth < 768);
+  // --- 1. BEAT DETECTION ---
+  // High threshold to only catch the "Kick" drum
+  let cleanBeat = beatStrength;
+  if (cleanBeat < 0.25) cleanBeat = 0; 
+  
+  const impulse = Math.pow(cleanBeat, 2);
+
+  // --- 2. STEP SEQUENCER ---
+  // If a hard beat hits, move to the next dance step
+  if (impulse > 0.3 && Date.now() - lastBeatTime.current > 300) {
+    step.current = (step.current + 1) % 4; // Cycle 0 -> 1 -> 2 -> 3 -> 0
+    lastBeatTime.current = Date.now();
+  }
+
+  // --- 3. CHOREOGRAPHY ENGINE ---
+  let x = 0;
+  let y = 0;
+  let rotate = 0;
+  let scaleY = 1;
+  let scaleX = 1;
+
+  if (isPlaying && cleanBeat > 0) {
+    // Apply the move based on which step we are on
+    switch (step.current) {
+      case 0: // MOVE LEFT
+        x = -4; 
+        rotate = -3;
+        break;
+      case 1: // MOVE RIGHT
+        x = 4;
+        rotate = 3;
+        break;
+      case 2: // JUMP UP
+        y = -8;
+        scaleX = 0.95; // Narrow
+        break;
+      case 3: // SQUASH DOWN
+        y = 2;
+        scaleY = 0.90; // Flatten
+        scaleX = 1.05; // Widen
+        break;
     }
-  }, []);
 
-  // --- NIKA PHYSICS CONFIGURATION ---
-  
-  // 1. ELASTICITY (The Rubber Effect)
-  // On desktop, we allow more stretch. On mobile, we keep it tight.
-  const stretchFactor = isMobile ? 0.03 : 0.08; 
-  
-  // 2. THE JUMP (Gravity Defying)
-  // Nika floats and bounces high.
-  const jumpHeight = isMobile ? -5 : -12;
-
-  // 3. THE LAUGH (Chaotic Rotation)
-  // Rotates wildly like Luffy laughing side-to-side
-  const maxRotation = isMobile ? 1.5 : 4; 
-
-  // --- REAL-TIME CALCULATIONS ---
-
-  // Scale: Uses a power curve so hard beats make it pop exponentially
-  const scale = 1 + Math.pow(beatStrength, 2) * stretchFactor;
-
-  // Y-Axis: Jumps up when the beat hits
-  const y = beatStrength * jumpHeight;
-
-  // Rotation: If the beat is strong (>0.3), pick a random tilt direction
-  // This creates that "wobbly/rubbery" look
-  const rotate = (beatStrength > 0.3) 
-    ? Math.sin(Date.now() / 100) * (beatStrength * maxRotation) 
-    : 0;
+    // Multiply everything by impulse so it's subtle on weak beats, strong on loud beats
+    x *= impulse;
+    y *= impulse;
+    rotate *= impulse;
+  }
 
   return {
     animate: {
-      scale: isPlaying ? scale : 1,
-      y: isPlaying ? y : 0,
-      rotate: isPlaying ? rotate : 0,
+      x,
+      y,
+      rotate,
+      scaleX: isPlaying ? scaleX : 1,
+      scaleY: isPlaying ? scaleY : 1,
     },
     transition: {
-      // THE GEAR 5 PHYSICS
+      // DANCE PHYSICS
+      // Stiffness 400 = Fast but follows the music
+      // Damping 15 = Lets it flow a bit
       type: "spring" as const,
-      stiffness: 500,  // Very snappy (Rubber snapping back)
-      damping: 12,     // Low friction (Bouncy)
-      mass: 0.6,       // Lightweight (Floaty)
+      stiffness: 400,
+      damping: 15,     
+      mass: 0.5,       
     }
   };
 }

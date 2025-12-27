@@ -48,7 +48,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         sourceRef.current = audioContextRef.current.createMediaElementSource(audioRef.current);
         sourceRef.current.connect(analyserRef.current);
         analyserRef.current.connect(audioContextRef.current.destination);
-        console.log("🔊 Audio Graph Connected Successfully");
+        // console.log("🔊 Audio Graph Connected Successfully");
       } catch (e) {
         console.error("Audio Graph Error:", e);
       }

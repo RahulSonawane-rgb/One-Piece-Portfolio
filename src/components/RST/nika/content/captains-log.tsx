@@ -15,15 +15,14 @@ export function CaptainsLog() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-10 md:mb-16" // Reduced bottom margin for mobile
+          className="text-center mb-10 md:mb-16"
         >
-          {/* Flex wrap allows stacking on very small screens, but row looks best usually */}
           <div className="flex items-center justify-center gap-2 md:gap-3 mb-3 md:mb-4">
             {/* Responsive Icons: smaller on mobile (w-6) */}
             <BookOpen className="w-6 h-6 md:w-10 md:h-10 text-yellow-400 shrink-0" />
             
             {/* Responsive Text: text-3xl on mobile -> 6xl on desktop */}
-            <h2 className="text-3xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-200 leading-tight" style={{ fontFamily: 'serif' }}>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-200 leading-tight font-bold" style={{ fontFamily: 'serif' }}>
               The Captain's Log
             </h2>
             
@@ -38,9 +37,9 @@ export function CaptainsLog() {
         {/* Grid: 1 column on mobile, 2 columns on Large screens (lg) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           
-          {/* Behind the Scenes */}
+          {/* Behind the Scenes Column */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }} // Reduced movement distance for smoother mobile anim
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -49,17 +48,17 @@ export function CaptainsLog() {
             <BehindTheScenes />
           </motion.div>
 
-          {/* Den Den Mushi Contact Form */}
+          {/* Den Den Mushi Contact Form Column */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-white/5 p-4 md:p-6 rounded-xl border border-white/10 backdrop-blur-sm" // Added card styling for better containment on mobile
+            className="bg-white/5 p-4 md:p-6 rounded-xl border border-white/10 backdrop-blur-sm h-fit"
           >
             <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
               <Phone className="w-6 h-6 md:w-8 md:h-8 text-purple-400 shrink-0" />
-              <h3 className="text-2xl md:text-3xl text-purple-300 leading-none" style={{ fontFamily: 'serif' }}>
+              <h3 className="text-2xl md:text-3xl text-purple-300 font-bold leading-none" style={{ fontFamily: 'serif' }}>
                 Den Den Mushi Direct Line
               </h3>
             </div>
