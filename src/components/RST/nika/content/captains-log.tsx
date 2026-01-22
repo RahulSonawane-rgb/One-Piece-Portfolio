@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { BookOpen, Phone } from 'lucide-react';
-import { DenDenMushiForm } from './den-den-mushi-form';
+import { BookOpen } from 'lucide-react';
 import { BehindTheScenes } from './behind-the-scenes';
 
 export function CaptainsLog() {
@@ -48,28 +47,6 @@ export function CaptainsLog() {
             <BehindTheScenes />
           </motion.div>
 
-          {/* Den Den Mushi Contact Form Column */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-white/5 p-4 md:p-6 rounded-xl border border-white/10 backdrop-blur-sm h-fit"
-          >
-            <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
-              <Phone className="w-6 h-6 md:w-8 md:h-8 text-purple-400 shrink-0" />
-              <h3 className="text-2xl md:text-3xl text-purple-300 font-bold leading-none" style={{ fontFamily: 'serif' }}>
-                Den Den Mushi Direct Line
-              </h3>
-            </div>
-            
-            <p className="text-sm md:text-base text-amber-50/80 mb-6 leading-relaxed">
-              As a worthy traveler who reached Laugh Tale, you've earned the privilege of direct communication. 
-              Your message will be marked as <span className="text-yellow-400 font-semibold whitespace-nowrap">HIGH PRIORITY</span>.
-            </p>
-            
-            <DenDenMushiForm />
-          </motion.div>
         </div>
       </div>
     </section>
