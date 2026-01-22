@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
-import { BountyPosterResume } from './bounty-poster-resume';
-import { MarineFileResume } from './marine-file-resume';
-import { LogPoseResume } from './log-pose-resume';
+// 1. Import the new component
+import { ResumeAppUnlock } from './resume-app-unlock';
 import { DevilFruitLibrary } from './devil-fruit-library';
-import { Scroll, Award } from 'lucide-react';
+import { Award, Smartphone } from 'lucide-react'; // Changed icon
 
 export function TreasureVault() {
   return (
@@ -28,40 +27,29 @@ export function TreasureVault() {
         </p>
       </motion.div>
 
-      <div className="max-w-7xl mx-auto space-y-16 md:space-y-20">
-        {/* Bounty Resume Templates */}
+      <div className="max-w-7xl mx-auto space-y-16 md:space-y-24">
+        
+        {/* --- REPLACED: APP UNLOCK SECTION --- */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-8">
-            <Scroll className="w-6 h-6 md:w-8 md:h-8 text-yellow-400 shrink-0" />
-            <h3 className="text-2xl md:text-3xl lg:text-4xl text-yellow-300 font-bold" style={{ fontFamily: 'serif' }}>
-              The Bounty Resume Collection
+          <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-8 justify-center md:justify-start">
+            <Smartphone className="w-6 h-6 md:w-8 md:h-8 text-cyan-400 shrink-0" />
+            <h3 className="text-2xl md:text-3xl lg:text-4xl text-cyan-300 font-bold" style={{ fontFamily: 'serif' }}>
+              The Ultimate Tool
             </h3>
           </div>
-          <p className="text-amber-50/80 mb-6 md:mb-8 max-w-3xl text-sm md:text-base leading-relaxed">
-            Three legendary resume templates, each crafted to help you stand out in the job market. 
-            Download, customize, and make them your own.
-          </p>
           
-          {/* Resume Grid: Stacks 1 column on mobile, 3 on desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <div className="h-[400px] md:h-[500px]">
-               <BountyPosterResume />
-            </div>
-            <div className="h-[400px] md:h-[500px]">
-               <MarineFileResume />
-            </div>
-            <div className="h-[400px] md:h-[500px]">
-               <LogPoseResume />
-            </div>
-          </div>
+          {/* THE NEW COMPONENT */}
+          <ResumeAppUnlock />
+          
         </motion.div>
+        {/* ----------------------------------- */}
 
-        {/* Devil Fruit Component Library */}
+        {/* Devil Fruit Component Library (Kept as is) */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
