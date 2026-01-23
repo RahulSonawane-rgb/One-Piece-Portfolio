@@ -13,7 +13,7 @@ export function ResumeAppUnlock() {
   const { toast } = useToast();
 
   // REPLACE THIS WITH YOUR ACTUAL APP LINK
-  const APP_DOWNLOAD_LINK = "#"; 
+  const APP_DOWNLOAD_LINK = "https://rahulsonawane-rgb.github.io/AI-Resume-Builder/"; 
 
   const handleRequestKey = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,7 +49,7 @@ export function ResumeAppUnlock() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export function ResumeAppUnlock() {
         <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')] pointer-events-none"></div>
         <div className="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="grid md:grid-cols-2 gap-8 p-8 relative z-10">
+        <div className="grid md:grid-cols-2 gap-8 p-6 sm:p-8 relative z-10">
           
           {/* LEFT SIDE: THE APP PRESENTATION */}
           <div className="flex flex-col justify-center space-y-6">
@@ -69,19 +69,19 @@ export function ResumeAppUnlock() {
                 <Zap className="w-3 h-3" />
                 <span>NEW ERA TECHNOLOGY</span>
               </div>
-              <h3 className="text-3xl md:text-4xl font-black text-white mb-2 italic">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-2 italic">
                 AI RESUME BUILDER
               </h3>
-              <p className="text-purple-200/80 text-sm md:text-base leading-relaxed">
+              <p className="text-purple-200/80 text-sm sm:text-base leading-relaxed">
                 You've found the One Piece of career tools. Build your resume in seconds using the power of the <span className="text-cyan-400 font-bold">Brain-Brain Fruit (AI)</span>.
               </p>
             </div>
 
             {/* App Download Action */}
             <div className="p-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
-               <div className="flex items-center justify-between mb-4">
+               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-4 sm:gap-0">
                   <div className="flex items-center gap-3">
-                     <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+                     <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
                         <Smartphone className="w-6 h-6 text-white" />
                      </div>
                      <div>
@@ -92,7 +92,7 @@ export function ResumeAppUnlock() {
                </div>
                <Button 
                  onClick={() => window.open(APP_DOWNLOAD_LINK, '_blank')}
-                 className="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold"
+                 className="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm py-2 sm:py-3 h-auto"
                >
                  <Download className="w-4 h-4 mr-2" />
                  Download Application
@@ -101,12 +101,12 @@ export function ResumeAppUnlock() {
           </div>
 
           {/* RIGHT SIDE: THE KEY REQUEST (LOCKED) */}
-          <div className="flex flex-col justify-center">
-            <div className="bg-black/40 border border-yellow-500/30 rounded-xl p-6 relative overflow-hidden">
+          <div className="flex flex-col justify-center mt-6 md:mt-0">
+            <div className="bg-black/40 border border-yellow-500/30 rounded-xl p-5 sm:p-6 relative overflow-hidden">
                {/* Lock Header */}
                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-yellow-500/20 rounded-full border border-yellow-500/50">
-                    <Key className="w-6 h-6 text-yellow-400 animate-pulse" />
+                  <div className="p-2 bg-yellow-500/20 rounded-full border border-yellow-500/50 flex-shrink-0">
+                    <Key className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 animate-pulse" />
                   </div>
                   <div>
                     <h4 className="text-yellow-400 font-bold uppercase tracking-wider text-sm">Restricted Access</h4>
@@ -119,19 +119,19 @@ export function ResumeAppUnlock() {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="text-center py-8"
+                      className="text-center py-6 sm:py-8"
                     >
-                       <div className="mx-auto w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mb-4">
-                          <CheckCircle className="w-8 h-8 text-green-400" />
+                       <div className="mx-auto w-14 h-14 sm:w-16 sm:h-16 bg-green-500/20 rounded-full flex items-center justify-center mb-4">
+                          <CheckCircle className="w-7 h-7 sm:w-8 sm:h-8 text-green-400" />
                        </div>
                        <h5 className="text-white font-bold text-lg mb-2">Request Received!</h5>
-                       <p className="text-white/60 text-sm">
-                         The Captain has received your signal. <br/>Check your email ({email}) shortly.
+                       <p className="text-white/60 text-sm px-2">
+                         The Captain has received your signal. <br className="hidden sm:block" />Check your email ({email}) shortly.
                        </p>
                        <Button 
                          variant="ghost" 
                          onClick={() => { setIsSuccess(false); setEmail(''); }}
-                         className="mt-4 text-purple-300 hover:text-white"
+                         className="mt-4 text-purple-300 hover:text-white text-sm"
                        >
                          Request another key
                        </Button>
@@ -156,14 +156,14 @@ export function ResumeAppUnlock() {
                           placeholder="pirate.king@example.com"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="bg-purple-900/40 border-purple-500/30 text-white placeholder:text-white/20 focus:border-yellow-400"
+                          className="bg-purple-900/40 border-purple-500/30 text-white placeholder:text-white/20 focus:border-yellow-400 h-10 sm:h-11 text-sm"
                         />
                       </div>
 
                       <Button 
                         type="submit" 
                         disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-black font-bold shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all"
+                        className="w-full bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-black font-bold shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all h-10 sm:h-11 text-sm"
                       >
                         {isSubmitting ? (
                           "Transmitting..."
