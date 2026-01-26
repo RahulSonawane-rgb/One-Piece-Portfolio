@@ -12,7 +12,7 @@ const socialLinks = [
   {
     name: 'LinkedIn',
     icon: Linkedin,
-    url: 'https://www.linkedin.com/in/rahul-sonawane-304354314/',
+    url: 'https://www.linkedin.com/in/rahulsonawane-rgb',
     color: 'group-hover:text-blue-700',
     borderColor: 'group-hover:border-blue-700',
   },
