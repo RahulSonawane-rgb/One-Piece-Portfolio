@@ -1,6 +1,43 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Instagram, Mail } from 'lucide-react';
 
+// --- Custom Icons (Since Lucide doesn't have Reddit/X) ---
+const RedditIcon = ({ className }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <circle cx="12" cy="12" r="10" />
+    <path d="M17 13c0 2-2 3-5 3s-5-1-5-3c-3 0-4-3-4-3" />
+    <line x1="12" y1="18" x2="12" y2="18.01" />
+    <circle cx="9" cy="10" r="1" fill="currentColor" />
+    <circle cx="15" cy="10" r="1" fill="currentColor" />
+    <path d="M16 8l-2-2 1-3" />
+  </svg>
+);
+
+const XIcon = ({ className }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+  </svg>
+);
+
 const socialLinks = [
   // {
   //   name: 'GitHub',
@@ -22,6 +59,20 @@ const socialLinks = [
     url: 'https://www.instagram.com/rahulsonawane1st_358/',
     color: 'group-hover:text-pink-700',
     borderColor: 'group-hover:border-pink-700',
+  },
+  {
+    name: 'Reddit',
+    icon: RedditIcon,
+    url: 'https://www.reddit.com/u/Jumpy-Abies-2792/s/a5XEKECTXl',
+    color: 'group-hover:text-orange-600',
+    borderColor: 'group-hover:border-orange-600',
+  },
+  {
+    name: 'X',
+    icon: XIcon,
+    url: 'https://x.com/RahulBtw',
+    color: 'group-hover:text-slate-900',
+    borderColor: 'group-hover:border-slate-900',
   },
   {
     name: 'Email',
