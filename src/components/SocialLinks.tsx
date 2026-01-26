@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Instagram, Mail } from 'lucide-react';
 
-// --- Custom Icons (Since Lucide doesn't have Reddit/X) ---
+// --- Custom Icons (Since Lucide doesn't 
 const RedditIcon = ({ className }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
@@ -13,14 +13,17 @@ const RedditIcon = ({ className }) => (
     strokeLinejoin="round" 
     className={className}
   >
-    <circle cx="12" cy="12" r="10" />
-    <path d="M17 13c0 2-2 3-5 3s-5-1-5-3c-3 0-4-3-4-3" />
-    <line x1="12" y1="18" x2="12" y2="18.01" />
-    <circle cx="9" cy="10" r="1" fill="currentColor" />
-    <circle cx="15" cy="10" r="1" fill="currentColor" />
-    <path d="M16 8l-2-2 1-3" />
+    <ellipse cx="12" cy="13" rx="8" ry="6" />
+    <circle cx="3.5" cy="9" r="2" />
+    <circle cx="20.5" cy="9" r="2" />
+    <path d="M12 7V3.5h3.5" />
+    <circle cx="17.5" cy="3.5" r="2" />
+    <circle cx="9" cy="12" r="1.5" fill="currentColor" stroke="none" />
+    <circle cx="15" cy="12" r="1.5" fill="currentColor" stroke="none" />
+    <path d="M8.5 15.5c1.5 1 5.5 1 7 0" />
   </svg>
 );
+
 
 const XIcon = ({ className }) => (
   <svg 
